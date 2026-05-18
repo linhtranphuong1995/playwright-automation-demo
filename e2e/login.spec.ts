@@ -1,22 +1,20 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/login.page';
+import { DashboardPage } from '../pages/dashboard.page';
 
 test('Successful login', async ({ page }) => {
+
+  const loginPage = new LoginPage(page);
+  const dashboardPage = new DashboardPage(page);
+  
   // Step 1: Navigate to Login page
-  await page.goto('',{ 
-  waitUntil: 'domcontentloaded' 
-  });
-  await expect(page.getByRole('heading',{name:'Login'})).toBeVisible();
-
-  // Step 2: Enter username
-  await page.getByPlaceholder('Username').fill(process.env.ADMIN_USER!);
-
-  // Step 3: Enter password
-  await page.getByPlaceholder('Password').fill(process.env.ADMIN_PASS!);
-
-  // Step 4: Click the Login button
-  await page.getByRole('button',{name: 'Login'}).click()
+  await loginPage.goto();
+  
+  // Step 2: Enter username & password, then login
+  await loginPage.login(process.env.ADMIN_USER!, process.env.ADMIN_PASS!);
 
   // Expect: User is redirected to Dashboard
+  await dashboardPage.goto();
   await expect(page).toHaveURL(/.*dashboard/);
-  await expect(page.getByRole('heading',{name:'Dashboard'})).toBeVisible();
+  await expect(dashboardPage.topBarTitle).toHaveText('Dashboard');
 });
