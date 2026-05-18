@@ -16,5 +16,6 @@ test('Successful login', async ({ page }) => {
   // Expect: User is redirected to Dashboard
   await dashboardPage.goto();
   await expect(page).toHaveURL(/.*dashboard/);
+  await dashboardPage.topBarTitle.waitFor({ state: 'visible', timeout: 15000 });
   await expect(dashboardPage.topBarTitle).toHaveText('Dashboard');
 });

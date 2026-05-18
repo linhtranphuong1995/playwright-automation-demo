@@ -8,8 +8,8 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page); // Call constructor of BasePage
-    this.usernameInput = page.getByPlaceholder('Username');
-    this.passwordInput = page.getByPlaceholder('Password');
+    this.usernameInput = page.locator('input[name="username"]');
+    this.passwordInput = page.locator('input[name="password"]');
     this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 

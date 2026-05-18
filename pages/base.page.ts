@@ -10,9 +10,7 @@ export class BasePage {
   }
 
   async goTo(url: string) {
-    await this.page.goto(url, { 
-      waitUntil: 'networkidle' 
-    });
+    await this.page.goto(url);
   }
 
   async clickElement(locator: Locator) {

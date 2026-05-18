@@ -28,6 +28,12 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: process.env.BASE_URL,
 
+    /* Simulator */
+    userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+
+    /* Screenshot when fail test */
+    screenshot: 'only-on-failure',
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },

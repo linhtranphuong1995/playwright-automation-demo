@@ -11,8 +11,6 @@ export class DashboardPage extends BasePage {
 
     // Navigation
     async goto() {
-        await this.page.goto('/web/index.php/dashboard/index', {
-            timeout: 30000
-        });
+        await this.page.goto('/web/index.php/dashboard/index');
     }
 }
