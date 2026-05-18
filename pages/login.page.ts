@@ -15,7 +15,9 @@ export class LoginPage extends BasePage {
 
   // Navigation
   async goto() {
-    await this.page.goto('/web/index.php/auth/login');
+    await this.page.goto('/web/index.php/auth/login', {
+            timeout: 30000
+        });
   }
 
   // Login
