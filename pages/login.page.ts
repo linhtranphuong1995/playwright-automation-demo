@@ -8,16 +8,14 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page); // Call constructor of BasePage
-    this.usernameInput = page.locator('input[name="username"]');
-    this.passwordInput = page.locator('input[name="password"]');
+    this.usernameInput = page.getByPlaceholder('Username');
+    this.passwordInput = page.getByPlaceholder('Password');
     this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 
   // Navigation
   async goto() {
-    await this.page.goto('/web/index.php/auth/login', {
-            timeout: 30000
-        });
+    await this.page.goto('/');
   }
 
   // Login

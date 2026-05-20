@@ -1,16 +1,16 @@
 import { Locator, Page } from '@playwright/test';
 import { BasePage } from './base.page';
 
-export class DashboardPage extends BasePage {
+export class InventoryPage extends BasePage {
     readonly topBarTitle: Locator;
     
     constructor(page: Page) {
         super(page); // Call constructor of BasePage
-        this.topBarTitle = page.locator('.oxd-topbar-header-title');
+        this.topBarTitle = page.getByText('Products');
     }
 
     // Navigation
     async goto() {
-        await this.page.goto('/web/index.php/dashboard/index');
+        await this.page.goto('/inventory.html');
     }
 }
