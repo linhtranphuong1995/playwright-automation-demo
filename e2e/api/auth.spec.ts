@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AuthAPI } from '../../api/auth.api';
+import { AuthAPI } from '../../api/auth.api.js';
 
 test('API - Successful login', async ({ request }) => {
     const authApi = new AuthAPI(request);
